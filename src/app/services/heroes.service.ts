@@ -62,6 +62,20 @@ export class HeroesService {
     return this.heroes[idx];
   }
 
+  buscarHeroes(textoBusqueda: string): Heroe[] {
+    let heroesArr: Heroe[] = [];
+    textoBusqueda = textoBusqueda.toLowerCase();
+
+    for (const heroe of this.heroes) {
+      const NOMBRE = heroe.nombre.toLowerCase();
+      if(NOMBRE.indexOf( textoBusqueda ) >= 0) {
+        heroesArr.push(heroe);
+      }
+    }
+
+    return heroesArr;
+  }
+
   constructor() {
     console.log('Servicio listo para usar');
   }
